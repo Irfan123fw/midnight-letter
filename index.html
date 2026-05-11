@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Surat Untukmu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+      }
+
+      body {
+        height: 100vh;
+        overflow: hidden;
+        background: linear-gradient(to bottom, #0f172a, #1e293b, #334155);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        position: relative;
+      }
+
+      .stars {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 0;
+      }
+
+      .star {
+        position: absolute;
+        width: 2px;
+        height: 2px;
+        background: white;
+        border-radius: 50%;
+        animation: twinkle 3s infinite ease-in-out;
+      }
+
+      @keyframes twinkle {
+        0%,100% { opacity: 0.2; }
+        50% { opacity: 1; }
+      }
+
+      .moon {
+        position: absolute;
+        top: 60px;
+        left: 80px;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(255,255,255,0.95), rgba(255,255,255,0.15));
+        box-shadow: 0 0 60px rgba(255,255,255,0.3);
+        z-index: 0;
+        animation: pulseMoon 4s infinite alternate;
+      }
+
+      @keyframes pulseMoon {
+        from {
+          transform: scale(1);
+        }
+        to {
+          transform: scale(1.08);
+        }
+      }
+
+      .container {
+        position: relative;
+        z-index: 2;
+        width: 90%;
+        max-width: 600px;
+        text-align: center;
+        backdrop-filter: blur(10px);
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 25px;
+        padding: 40px 30px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+        animation: fadeIn 1.5s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      h1 {
+        font-size: 2rem;
+        margin-bottom: 15px;
+        font-weight: 600;
+      }
+
+      p {
+        font-size: 1rem;
+        line-height: 1.8;
+        color: rgba(255,255,255,0.9);
+        min-height: 120px;
+        white-space: pre-line;
+      }
+
+      .btn {
+        margin-top: 25px;
+        border: none;
+        outline: none;
+        background: rgba(255,255,255,0.15);
+        color: white;
+        padding: 14px 28px;
+        border-radius: 999px;
+        cursor: pointer;
+        transition: 0.3s ease;
+        font-size: 1rem;
+        backdrop-filter: blur(5px);
+      }
+
+      input {
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        padding: 14px 18px;
+        border-radius: 15px;
+        border: none;
+        outline: none;
+        background: rgba(255,255,255,0.1);
+        color: white;
+        font-size: 1rem;
+        backdrop-filter: blur(5px);
+      }
+
+      input::placeholder {
+        color: rgba(255,255,255,0.6);
+      }
+
+      .nameBox {
+        animation: fadeIn 2s ease;
+      }
+
+      .btn:hover {
+        transform: scale(1.05);
+        background: rgba(255,255,255,0.25);
+      }
+
+      .heart {
+        position: absolute;
+        color: rgba(255,255,255,0.2);
+        font-size: 20px;
+        animation: float 8s linear infinite;
+      }
+
+      @keyframes float {
+        from {
+          transform: translateY(100vh) scale(0.5);
+          opacity: 0;
+        }
+        30% {
+          opacity: 1;
+        }
+        to {
+          transform: translateY(-120px) scale(1.2);
+          opacity: 0;
+        }
+      }
+
+      .final {
+        font-size: 1.3rem;
+        color: #fda4af;
+        margin-top: 15px;
+        animation: glow 2s infinite alternate;
+      }
+
+      @keyframes fadeGlow {
+        from {
+          opacity: 1;
+          transform: scale(1);
+        }
+        to {
+          opacity: 0;
+          transform: scale(4);
+        }
+      }
+
+      @keyframes glow {
+        from {
+          text-shadow: 0 0 10px rgba(255,255,255,0.2);
+        }
+        to {
+          text-shadow: 0 0 20px rgba(255,182,193,0.8);
+        }
+      }
+
+      .music-control {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 10;
+        background: rgba(255,255,255,0.12);
+        border: 1px solid rgba(255,255,255,0.1);
+        padding: 10px 18px;
+        border-radius: 999px;
+        cursor: pointer;
+        backdrop-filter: blur(6px);
+        transition: 0.3s ease;
+        font-size: 0.9rem;
+      }
+
+      .music-control:hover {
+        background: rgba(255,255,255,0.2);
+        transform: scale(1.05);
+      }
+        to {
+          text-shadow: 0 0 20px rgba(255,182,193,0.8);
+        }
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div class="stars"></div>
+
+    <audio id="bgMusic" autoplay loop>
+      <source src="music.mp3" type="audio/mpeg" />
+    </audio>
+
+    <div class="music-control" onclick="toggleMusic()" id="musicBtn">
+      🎵 Music On
+    </div>
+
+    <div class="moon"></div>
+
+    <div class="container">
+      <h1 id="title">Untuk Seseorang ✨</h1>
+
+      <div class="nameBox" id="nameBox">
+        <input type="text" id="username" placeholder="Masukkan namamu..." />
+        <button class="btn" onclick="startLetter()">Buka Surat 💌</button>
+      </div>
+      <p id="text" style="display: none"></p>
+
+      <button
+        class="btn"
+        id="mainBtn"
+        onclick="nextMessage()"
+        style="display: none"
+      >
+        Lanjut
+      </button>
+
+      <div class="final" id="finalText"></div>
+    </div>
+
+    <script>
+      let userName = "";
+
+      const messages = [
+        "Entah sejak kapan...\naku mulai menunggu pesan darimu setiap hari.",
+
+        "Hal kecil tentangmu\nselalu berhasil membuat hariku lebih baik.",
+
+        "Aku suka caramu tertawa,\ncaramu bercerita,\ndan caramu hadir tanpa sadar mengubah semuanya.",
+
+        "Mungkin ini terdengar sederhana...\ntapi aku benar-benar nyaman saat bersamamu.",
+
+        "Dan jika suatu hari\nkamu membaca surat ini sampai akhir...",
+
+        "Aku cuma ingin kamu tahu...\naku menyukaimu. ❤️",
+      ];
+
+      let index = 0;
+
+      function startLetter() {
+        const input = document.getElementById("username");
+        const text = document.getElementById("text");
+        const button = document.getElementById("mainBtn");
+        const box = document.getElementById("nameBox");
+        const title = document.getElementById("title");
+
+        userName = input.value || "Kamu";
+
+        title.innerHTML = `Untuk ${userName} ✨`;
+
+        box.style.display = "none";
+        text.style.display = "block";
+        button.style.display = "inline-block";
+
+        typeWriter(
+          `Hai ${userName}...
+
+Aku punya sesuatu yang ingin aku sampaikan.`,
+          text,
+        );
+      }
+
+      function typeWriter(text, element, speed = 35) {
+        element.innerHTML = "";
+        let i = 0;
+
+        const typing = setInterval(() => {
+          if (i < text.length) {
+            if (text.charAt(i) === "\n") {
+              element.innerHTML += "<br>";
+            } else {
+              element.innerHTML += text.charAt(i);
+            }
+            i++;
+          } else {
+            clearInterval(typing);
+          }
+        }, speed);
+      }
+
+      function nextMessage() {
+        const text = document.getElementById("text");
+        const finalText = document.getElementById("finalText");
+        const button = document.getElementById("mainBtn");
+
+        if (index < messages.length) {
+          typeWriter(messages[index], text);
+          index++;
+        }
+
+        if (index === messages.length) {
+          finalText.innerHTML = "Aku harap kamu membalas perasaan ini ✨";
+
+          button.innerHTML = "Kirim Pesan 💌";
+          button.onclick = sendMessage;
+        }
+      }
+
+      function sendMessage() {
+        createExplosion();
+        const phoneNumber = "628123456789";
+        const message = encodeURIComponent(
+          "Hai... aku sudah membaca suratmu 🤍",
+        );
+
+        setTimeout(() => {
+          window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
+        }, 1200);
+      }
+
+      // Stars
+      const starsContainer = document.querySelector(".stars");
+
+      for (let i = 0; i < 120; i++) {
+        const star = document.createElement("div");
+        star.classList.add("star");
+        star.style.top = Math.random() * 100 + "%";
+        star.style.left = Math.random() * 100 + "%";
+        star.style.animationDelay = Math.random() * 3 + "s";
+        starsContainer.appendChild(star);
+      }
+
+      // Floating hearts
+      function createHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "❤";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = Math.random() * 20 + 10 + "px";
+        heart.style.animationDuration = Math.random() * 5 + 5 + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 8000);
+      }
+
+      setInterval(createHeart, 800);
+
+      function createExplosion() {
+        for (let i = 0; i < 40; i++) {
+          const spark = document.createElement("div");
+          spark.innerHTML = "✨";
+          spark.style.position = "absolute";
+          spark.style.left = "50%";
+          spark.style.top = "50%";
+          spark.style.fontSize = Math.random() * 20 + 10 + "px";
+          spark.style.pointerEvents = "none";
+          spark.style.zIndex = "999";
+          spark.style.transition = "1.2s ease-out";
+
+          document.body.appendChild(spark);
+
+          const x = (Math.random() - 0.5) * 800;
+          const y = (Math.random() - 0.5) * 800;
+
+          setTimeout(() => {
+            spark.style.transform = `translate(${x}px, ${y}px) rotate(720deg)`;
+            spark.style.opacity = "0";
+          }, 10);
+
+          setTimeout(() => {
+            spark.remove();
+          }, 1300);
+        }
+      }
+
+      document.addEventListener("mousemove", (e) => {
+        const glow = document.createElement("div");
+        glow.style.position = "absolute";
+        glow.style.left = e.pageX + "px";
+        glow.style.top = e.pageY + "px";
+        glow.style.width = "8px";
+        glow.style.height = "8px";
+        glow.style.borderRadius = "50%";
+        glow.style.background = "rgba(255,255,255,0.5)";
+        glow.style.pointerEvents = "none";
+        glow.style.zIndex = "999";
+        glow.style.animation = "fadeGlow 1s forwards";
+
+        document.body.appendChild(glow);
+
+        setTimeout(() => {
+          glow.remove();
+        }, 1000);
+      });
+
+      const bgMusic = document.getElementById("bgMusic");
+      const musicBtn = document.getElementById("musicBtn");
+
+      function toggleMusic() {
+        if (bgMusic.paused) {
+          bgMusic.play();
+          musicBtn.innerHTML = "🎵 Music On";
+        } else {
+          bgMusic.pause();
+          musicBtn.innerHTML = "🔇 Music Off";
+        }
+      }
+
+      // autoplay fallback
+      document.body.addEventListener(
+        "click",
+        () => {
+          bgMusic.play().catch(() => {});
+        },
+        { once: true },
+      );
+    </script>
+  </body>
+</html>
